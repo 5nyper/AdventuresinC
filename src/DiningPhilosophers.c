@@ -5,7 +5,6 @@
 #define NUM_THREADS 5
 
 struct timespec time1;
-struct timespec time2;
 mtx_t forks[NUM_THREADS];
 
 typedef struct {
@@ -24,7 +23,6 @@ Philosopher *create(char *nam, int lef, int righ) {
 
 int eat(void *data) {
 	time1.tv_sec = 1;
-	time2.tv_nsec = 150;
 	Philosopher *foo = (Philosopher *) data;
 	mtx_lock(&forks[foo->left]);   
 	mtx_lock(&forks[foo->right]);
